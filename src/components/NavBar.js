@@ -12,16 +12,16 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
       <li className="nav-item">
-         <a className="nav-link" href="./paginas/accesorios.js">Accesorios</a>
+         <a className="nav-link" href="/accesorios.js">Accesorios</a>
       </li>
       <li className="nav-item">
-          <a className="nav-link" href="./paginas/coleccionables.js">Coleccionables</a>
+          <a className="nav-link" href="/coleccionables.js">Coleccionables</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="./paginas/vestimentas.js">Vestimentas</a>
+        <a className="nav-link" href="/vestimentas.js">Vestimentas</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="./paginas/nosotros.js">Nosotros</a>
+        <a className="nav-link" href="/nosotros.js">Nosotros</a>
       </li>
       </ul>
       <span className="navbar-text">
