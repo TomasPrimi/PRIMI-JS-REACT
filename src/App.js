@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/NavBar';
+import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
 import Accesorios from './paginas/accesorios';
 import Coleccionables from './paginas/coleccionables';
@@ -18,6 +19,9 @@ function App() {
             path="/"
             element={<ItemListContainer greeting={"Bienvenidos D-shop"} />}
           />
+
+          <Route path="/detalle/:idProductos" 
+          element={<ItemDetailContainer />} />
 
           <Route path="/accesorios" element={<Accesorios/>}> </Route>
 
