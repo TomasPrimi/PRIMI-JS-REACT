@@ -1,6 +1,7 @@
-import React from "react"
+import React from "react";
+import "./ItemListContainer.css";
 
-export const productos= [
+export const products= [
     {
       "nombre": "Remera Strand",
       "precio": 24.99,
@@ -86,25 +87,25 @@ export const productos= [
       "id":12
     }
   ]
-const ItemListContainer = () => {
-  return (
-    <div>
-      <h2>¡Destacado Del Dia!</h2>
-      <div className="productos-container">
-        {productos.map((producto) => (
-          <div key={producto.id} className="producto">
-            <h3>{producto.nombre}</h3>
-            <img src={productos.imagen} alt={productos.nombre} />       
-            <p>Precio: ${producto.precio}</p>
-            <p>{producto.descripcion}</p>
-            <a href="#">Ver detalle del Producto</a>
-            <button>Agregar al Carrito</button>
-          </div>
-        ))}
+  const ItemListContainer = () => {
+    return (
+      <div>
+        <h2>¡Destacado Del Dia!</h2>
+        <div className="products-container">
+          {products.map((product) => (
+            <div key={product.id} className="product">
+              <h3>{product.nombre}</h3>
+              <img src={`${process.env.PUBLIC_URL}/${product.imagen}`} alt={product.nombre} />  
+              <p>Precio: ${product.precio}</p>
+              <p>{product.descripcion}</p>
+              <a href="#">Ver detalle del Producto</a>
+              <button>Agregar al Carrito</button>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 
 

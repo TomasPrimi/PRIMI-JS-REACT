@@ -1,17 +1,17 @@
-import { productos } from "./ItemListContainer";
+import { products } from "./ItemListContainer";
 function ItemDetailContainer() {
     return (
         <>
           <div className="card-detail_main">
             <div className="card-detail_img">
-              <img src={productos.imagen} alt={productos.nombre} />
+              <img src={products.imagen} alt={products.nombre} />
             </div>
             <div className="card-detail_detail">
               <h1>
-                {productos.nombre}
+                {products.nombre}
               </h1>
-              <h2 className="priceTag">$ {productos.precio}</h2>
-              <small>{productos.editorial}</small>
+              <h2 className="priceTag">$ {products.precio}</h2>
+              <small>{products.editorial}</small>
             </div>
           </div>
         </>
