@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/NavBar';
 import ItemDetailContainer from './components/ItemDetailContainer';
-import ItemListContainer from './components/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Accesorios from './paginas/accesorios';
 import Coleccionables from './paginas/coleccionables';
 import Vestimentas from './paginas/vestimentas';

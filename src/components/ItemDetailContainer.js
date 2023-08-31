@@ -1,4 +1,4 @@
-import { products } from "./ItemListContainer";
+import { products } from "./ItemListContainer/ItemListContainer";
 function ItemDetailContainer() {
     return (
         <>
