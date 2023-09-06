@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import "./ItemListContainer.css";
+import { Link } from 'react-router-dom';
+
 
 export const products= [
     {
@@ -88,17 +91,34 @@ export const products= [
     }
   ]
   const ItemListContainer = () => {
+    const [items, setItems] = useState([]);
+    const { id } = useParams();
+  
+    useEffect(() => {
+      const getProducts = async () => {
+        // Simular una solicitud asincrónica (por ejemplo, a una API)
+        // Aquí deberías realizar la lógica de solicitud de productos
+        // En este ejemplo, simplemente filtramos productos por categoría si se proporciona una categoría en la URL
+        const filteredProducts = id
+          ? products.filter((product) => product.categoria === id)
+          : products;
+  
+        setItems(filteredProducts);
+      };
+  
+      getProducts();
+    }, [id]);
+  
     return (
       <div>
         <h2>¡Destacado Del Dia!</h2>
         <div className="products-container">
-          {products.map((product) => (
+          {items.map((product) => (
             <div key={product.id} className="product">
               <h3>{product.nombre}</h3>
-              <img src={`${process.env.PUBLIC_URL}/${product.imagen}`} alt={product.nombre} />  
+              <img src={product.imagen} alt={product.nombre} />
               <p>Precio: ${product.precio}</p>
-              <p>{product.descripcion}</p>
-              <a href="#">Ver detalle del Producto</a>
+              <Link to={`/detail/${product.id }`}>Ver detalle del Producto</Link>
               <button>Agregar al Carrito</button>
             </div>
           ))}
@@ -106,7 +126,5 @@ export const products= [
       </div>
     );
   };
-
-
-
-export default ItemListContainer;
+  
+  export default ItemListContainer;

@@ -3,10 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/NavBar';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
-import Accesorios from './paginas/accesorios';
-import Coleccionables from './paginas/coleccionables';
-import Vestimentas from './paginas/vestimentas';
-import Nosotros from './paginas/nosotros';
+
 
 
 function App() {
@@ -19,17 +16,10 @@ function App() {
             path="/"
             element={<ItemListContainer greeting={"Bienvenidos D-shop"} />}
           />
+          <Route path="/detail/:id" element={<ItemDetailContainer/>} />
 
-          <Route path="/detalle/:idProductos" 
-          element={<ItemDetailContainer />} />
+          <Route path="/categoria/:id" element={<ItemListContainer/>} />
 
-          <Route path="/accesorios" element={<Accesorios/>}> </Route>
-
-          <Route path ="/coleccionables" element={<Coleccionables/>}> </Route>
-
-          <Route path="/vestimentas" element={<Vestimentas/>}> </Route>
-
-          <Route path="/nosotros" element={<Nosotros/>}></Route>
 
         </Routes>
       </BrowserRouter>
