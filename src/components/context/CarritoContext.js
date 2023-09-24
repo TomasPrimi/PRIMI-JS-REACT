@@ -1,17 +1,14 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
-const carritoContext = createContext({ carrito: [] });
-const Provider = carritoContext.Provider;
+const CarritoContext = createContext();
 
 export function CarritoContextProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
 
- 
   function addItem(product, count) {
-    const newCarrito = JSON.parse(JSON.stringify(carrito));
+    const newCarrito = [...carrito];
 
     if (isInCarrito(product.id)) {
-
       let index = carrito.findIndex((productInCarrito) => productInCarrito.id === product.id);
       newCarrito[index].count = newCarrito[index].count + count;
     } else {
@@ -21,18 +18,16 @@ export function CarritoContextProvider({ children }) {
   }
 
   function clearCarrito() {
-
+    setCarrito([]);
   }
-    
+
   const removeItemFromCarrito = (productId) => {
     const newCarrito = carrito.filter((product) => product.id !== productId);
     setCarrito(newCarrito);
   };
 
-
-
   function getCountInCarrito() {
-    return carrito.reduce((accum, item) => accum = accum + item.count, 0);
+    return carrito.reduce((accum, item) => accum + item.count, 0);
   }
 
   function getPriceInCarrito() {
@@ -41,30 +36,33 @@ export function CarritoContextProvider({ children }) {
     }, 0);
     return total.toFixed(2);
   }
-  
 
   function isInCarrito(id) {
     return carrito.some((product) => product.id === id);
   }
 
   return (
-    <Provider
+    <CarritoContext.Provider
       value={{
         carrito,
         addItem,
-        test: "ok",
-        isInCarrito,
+        clearCarrito,
         removeItemFromCarrito,
+        getCountInCarrito,
         getPriceInCarrito,
-        getCountInCarrito
       }}
     >
       {children}
-    </Provider>
+    </CarritoContext.Provider>
   );
-    }
-    
+}
 
-    
+export function useCarrito() {
+  const context = useContext(CarritoContext);
+  if (!context) {
+    throw new Error("useCarrito debe ser usado dentro de un CarritoContextProvider");
+  }
+  return context;
+}
 
-export default carritoContext;
+export default CarritoContext;
