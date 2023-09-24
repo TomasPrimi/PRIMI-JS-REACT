@@ -4,8 +4,6 @@ import Navbar from './components/NavBar';
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import ItemListContainer from './components/ItemList/ItemListContainer';
 
-
-
 function App() {
   return (
     <div className="App">

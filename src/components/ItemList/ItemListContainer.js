@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./ItemListContainer.css";
 import { Link } from 'react-router-dom';
+import CartContext, { CartProvider, useCart } from '../cart/CartContext';
 
 
 export const products= [
@@ -90,15 +91,13 @@ export const products= [
       "id":12
     }
   ]
+
   const ItemListContainer = () => {
     const [items, setItems] = useState([]);
     const { id } = useParams();
   
     useEffect(() => {
       const getProducts = async () => {
-        // Simular una solicitud asincrónica (por ejemplo, a una API)
-        // Aquí deberías realizar la lógica de solicitud de productos
-        // En este ejemplo, simplemente filtramos productos por categoría si se proporciona una categoría en la URL
         const filteredProducts = id
           ? products.filter((product) => product.categoria === id)
           : products;
@@ -108,23 +107,29 @@ export const products= [
   
       getProducts();
     }, [id]);
+    const { addToCart } = useCart();
+
+    const handleClick = () => {
+      addToCart(products);
+    };
   
+
     return (
       <div>
         <h2>¡Destacado Del Dia!</h2>
         <div className="products-container">
-          {items.map((product) => (
-            <div key={product.id} className="product">
-              <h3>{product.nombre}</h3>
-              <img src={product.imagen} alt={product.nombre} />
-              <p>Precio: ${product.precio}</p>
-              <Link to={`/detail/${product.id }`}>Ver detalle del Producto</Link>
-              <button>Agregar al Carrito</button>
+          {items.map((products) => (
+            <div key={products.id} className="product">
+              <h3>{products.nombre}</h3>
+              <img src={products.imagen} alt={products.nombre} />
+              <p>Precio: ${products.precio}</p>
+              <Link to={`/detail/${products.id}`}>Ver detalle del Producto</Link>
+              <button onClick={handleClick}> Agregar al Carrito</button>
             </div>
           ))}
         </div>
       </div>
     );
-  };
-  
+  }
   export default ItemListContainer;
+
