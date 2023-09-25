@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
-import carritoContext from "../../context/carritoContext";
-import Button from "../Button";
+import carritoContext from "../context/CarritoContext";
+import Button from "../Button/Index";
 import CheckoutCarrito from "./CheckoutCarrito";
 import "./styles.css";
 

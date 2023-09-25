@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../Button";
+import Button from "../Button/Index";
 import { db } from '../../services/firestore';
 import Swal from 'sweetalert2';
 
