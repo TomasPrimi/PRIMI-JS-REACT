@@ -1,19 +1,18 @@
-import React from "react";
 import { BsFillCartFill } from "react-icons/bs";
 import "./styles.css";
-import { useCarrito } from "../context/CarritoContext";
+import { useCart } from '../context/CartContext';
 
-function CarritoWidget() {
-  const { getCountInCarrito } = useCarrito();
+function CartWidget() {
+  const { getCountInCart } = useCart(); 
 
-  const carritoCount = getCountInCarrito();
+  const cartCount = getCountInCart();
 
   return (
     <span className="cart-widget nav">
       <BsFillCartFill className="icon" />
-      <span className="badge nav">{carritoCount}</span>
+      <span className="badge nav">{cartCount}</span>
     </span>
   );
 }
 
-export default CarritoWidget;
+export default CartWidget;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./ItemListContainer.css";
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 
 export const products= [
@@ -93,6 +94,7 @@ export const products= [
   const ItemListContainer = () => {
     const [items, setItems] = useState([]);
     const { id } = useParams();
+    const { addItem } = useCart(); 
   
     useEffect(() => {
       const getProducts = async () => {
@@ -106,6 +108,10 @@ export const products= [
       getProducts();
     }, [id]);
   
+    const handleAddToCart = (product) => {
+      addItem({ ...product, id: product.id }, 1);
+    };
+  
     return (
       <div>
         <h2>¡Destacado Del Dia!</h2>
@@ -115,8 +121,8 @@ export const products= [
               <h3>{product.nombre}</h3>
               <img src={product.imagen} alt={product.nombre} />
               <p>Precio: ${product.precio}</p>
-              <Link to={`/detail/${product.id }`}>Ver detalle del Producto</Link>
-              <button>Agregar al Carrito</button>
+              <Link to={`/detail/${product.id}`}>Ver detalle del Producto</Link>
+              <button onClick={() => handleAddToCart(product)}>Agregar al Carrito</button>
             </div>
           ))}
         </div>
@@ -125,3 +131,4 @@ export const products= [
   };
   
   export default ItemListContainer;
+  
