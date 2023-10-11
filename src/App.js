@@ -5,6 +5,8 @@ import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import ItemListContainer from './components/ItemList/ItemListContainer';
 import Index from './components/CartContainer/index';
 import { CartContextProvider } from './components/context/CartContext';
+import FinalizarCompra from './components/CartContainer/FinalizarCompra';
+
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
             element={<ItemListContainer greeting={"Bienvenidos D-shop"} />}
           />
           <Route path="/detail/:id" element={<ItemDetailContainer/>} />
+
+          <Route path="/finalizar-compra" component={ <FinalizarCompra/> } />
 
           <Route path="/checkout" element={< Index />} />
 

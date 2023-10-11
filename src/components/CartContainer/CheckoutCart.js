@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { products } from "../ItemList/ItemListContainer";
+import { useNavigate } from 'react-router-dom';
 
 function CheckoutCart({ cartIds, total }) {
   const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cartIds) {
@@ -10,7 +12,10 @@ function CheckoutCart({ cartIds, total }) {
       setCartItems(cartItemsData);
     }
   }, [cartIds]);
-  
+
+  const handleFinalizarCompraClick = () => {
+    navigate('/finalizar-compra', { state: { total, cartItems } });
+  };
 
   return (
     <div>
@@ -36,6 +41,7 @@ function CheckoutCart({ cartIds, total }) {
       </div>
       <div className="total">
         <h3>Total: ${total}</h3>
+        <button onClick={handleFinalizarCompraClick}>Ir a Pagar</button>
       </div>
     </div>
   );
