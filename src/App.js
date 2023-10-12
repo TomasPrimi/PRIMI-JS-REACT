@@ -21,7 +21,7 @@ function App() {
           />
           <Route path="/detail/:id" element={<ItemDetailContainer/>} />
 
-          <Route path="/finalizar-compra" component={ <FinalizarCompra/> } />
+          <Route path="/finalizar-compra" element={<FinalizarCompra />} />
 
           <Route path="/checkout" element={< Index />} />
 

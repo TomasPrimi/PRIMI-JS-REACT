@@ -11,7 +11,6 @@ const firebaseConfig = {
   appId: "1:902131192278:web:3eed72d69174cd7e545477"
 };
 
-
 export const db = getFirestore(app);
 
 export async function createOrder(orderData) {
